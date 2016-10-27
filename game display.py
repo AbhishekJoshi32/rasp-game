@@ -11,13 +11,21 @@ blue=[0,0,255]
 
 pygame.display.update()
 
+def gameloop():
+    gameExit = False
+    while not gameExit:
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                gameExit=True
+                
+        gameDisplay.fill(white)
 
-gameDisplay.fill(white)
+        pygame.draw.rect(gameDisplay, black,[ width/2-110,10,220,10])
 
-pygame.display.update()
+        pygame.draw.rect(gameDisplay, black,[ width/2-110,height-20,220,10])
 
-pygame.draw.rect(gameDisplay, black,[ width/2-110,10,220,10])
+        pygame.display.update()
+    pygame.quit()
+    quit()
 
-pygame.draw.rect(gameDisplay, black,[ width/2-110,height-20,220,10])
-
-pygame.display.update()
+gameloop()
