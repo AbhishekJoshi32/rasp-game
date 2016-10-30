@@ -27,6 +27,7 @@ def gameloop():
     bar2_y = height-20
     gameExit = False
     flag=0;
+    flag2=0;
     bar1_x_change=0
     bar2_x_change=0
     while not gameExit:
@@ -36,21 +37,38 @@ def gameloop():
             if event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_LEFT:
                     bar1_x_change=-2
+                    flag=1
                 if event.key==pygame.K_RIGHT:
                     bar1_x_change=2
+                    flag=2
                 if event.key==pygame.K_q:
                     bar2_x_change=-2
+                    flag2=1
                 if event.key==pygame.K_e:
                     bar2_x_change=2
+                    flag2=2
             if event.type==pygame.KEYUP:
                 if event.key==pygame.K_LEFT:
-                    bar1_x_change=0
+                    if flag==2:
+                        bar1_x_change=2
+                    else:
+                        bar1_x_change=0
                 if event.key==pygame.K_RIGHT:
-                    bar1_x_change=0
+                    if flag==1:
+                        bar1_x_change=-2
+                    else:
+                        bar1_x_change=0
                 if event.key==pygame.K_q:
-                    bar2_x_change=0
+                    if flag2==2:
+                        bar2_x_change=2
+                    else:
+                        bar2_x_change=0
                 if event.key==pygame.K_e:
-                    bar2_x_change=0
+                    if flag2==1:
+                        bar2_x_change=-2
+                    else:
+                        bar2_x_change=0
+                        
         gameDisplay.fill(white)
         if(ballh>=height-20):
             ballh_change=-1
